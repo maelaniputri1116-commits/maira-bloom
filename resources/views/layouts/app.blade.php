@@ -1,32 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'MAIRA BLOOM | Florist & Flower Studio')</title>
 
-    <title>@yield('title', 'MAIRA BLOOM - Flowers Made With Meaning')</title>
-
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-          rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-          rel="stylesheet">
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
-          rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
             --pink: #E8C6CD;
             --ivory: #F7F2E9;
             --sage: #A8B8A0;
-            --charcoal: #463D3D;
-            --muted: #817575;
+            --dark: #463D3D;
+            --white: #fff;
         }
 
         * {
@@ -34,134 +22,141 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
-            color: var(--charcoal);
-            background: #fff;
             margin: 0;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background: var(--white);
         }
 
-        h1, h2, h3, h4, h5 {
+        h1, h2, h3, h4, .serif {
             font-family: 'Playfair Display', serif;
         }
 
-        /* NAVBAR */
-        .main-navbar {
-            background: #fff;
-            padding: 17px 0;
-            border-bottom: 1px solid #f0e9e5;
+        .navbar {
+            background: rgba(255,255,255,.97);
+            padding: 12px 0;
+            border-bottom: 1px solid #eee5e2;
         }
 
         .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-family: 'Playfair Display', serif;
-            font-size: 27px;
+            font-size: 25px;
             font-weight: 600;
-            color: var(--charcoal) !important;
-            letter-spacing: 1px;
+            color: var(--dark);
         }
 
-        .navbar-brand span {
-            color: #bd8995;
+        .navbar-brand img {
+            width: 62px;
+            height: 62px;
+            object-fit: contain;
         }
 
-        .navbar-nav .nav-link {
-            color: var(--charcoal);
-            font-size: 14px;
-            margin: 0 10px;
+        .navbar-brand:hover {
+            color: var(--dark);
+        }
+
+        .navbar .nav-link {
+            color: var(--dark);
+            margin: 0 12px;
+            font-size: 15px;
             transition: .3s;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #bd8995;
+        .navbar .nav-link:hover {
+            color: #bd8290;
         }
 
-        .admin-link {
-            border: 1px solid var(--charcoal);
+        .admin-login {
+            border: 1px solid var(--dark);
             border-radius: 30px;
-            padding: 8px 18px !important;
-            margin-left: 12px;
+            padding: 10px 20px !important;
+            color: var(--dark) !important;
         }
 
-        .admin-link:hover {
-            background: var(--charcoal);
-            color: #fff !important;
+        .admin-login:hover {
+            background: var(--dark);
+            color: white !important;
         }
 
-        /* GENERAL */
+        .section-padding {
+            padding: 75px 0;
+        }
+
         .section-title {
-            font-family: 'Playfair Display', serif;
-            color: var(--charcoal);
+            font-size: 42px;
+            margin-bottom: 15px;
         }
 
-        .btn-dark-custom {
-            background: var(--charcoal);
-            color: #fff;
+        .btn-pink {
+            background: var(--pink);
+            color: var(--dark);
             border: none;
             border-radius: 30px;
-            padding: 11px 25px;
+            padding: 13px 28px;
             text-decoration: none;
             display: inline-block;
             transition: .3s;
         }
 
-        .btn-dark-custom:hover {
-            background: var(--sage);
-            color: var(--charcoal);
+        .btn-pink:hover {
+            background: #d9adb8;
+            color: var(--dark);
         }
 
-        /* FOOTER */
-        .main-footer {
-            background: var(--charcoal);
-            color: #fff;
-            padding: 55px 0 20px;
-            margin-top: 30px;
+        .product-card {
+            border: none;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 18px rgba(0,0,0,.07);
+            transition: .3s;
+            height: 100%;
         }
 
-        .footer-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 29px;
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 45px 0 20px;
+            margin-top: 60px;
+        }
+
+        footer a {
             color: var(--pink);
-        }
-
-        .main-footer p {
-            color: #d7ceca;
-            font-size: 14px;
-            line-height: 1.8;
-        }
-
-        .main-footer a {
-            color: #e8deda;
             text-decoration: none;
-            display: block;
-            margin-bottom: 10px;
-            font-size: 14px;
         }
 
-        .main-footer a:hover {
-            color: var(--pink);
-        }
-
-        .footer-bottom {
-            border-top: 1px solid #665b59;
-            margin-top: 30px;
-            padding-top: 20px;
-            text-align: center;
-            color: #d7ceca;
-            font-size: 13px;
-        }
-
-        @media (max-width: 991px) {
-            .navbar-nav {
-                padding-top: 15px;
+        @media (max-width: 768px) {
+            .navbar-brand {
+                font-size: 20px;
             }
 
-            .navbar-nav .nav-link {
-                margin: 7px 0;
+            .navbar-brand img {
+                width: 48px;
+                height: 48px;
             }
 
-            .admin-link {
-                display: inline-block;
-                width: fit-content;
-                margin-left: 0;
+            .navbar .nav-link {
+                margin: 5px 0;
+            }
+
+            .section-title {
+                font-size: 32px;
+            }
+
+            .product-card img {
+                height: 220px;
             }
         }
     </style>
@@ -172,62 +167,52 @@
 <body>
 
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg main-navbar sticky-top">
+    <nav class="navbar navbar-expand-lg sticky-top">
         <div class="container">
 
             <a class="navbar-brand" href="{{ route('home') }}">
-                MAIRA <span>BLOOM</span>
+                <img
+                    src="{{ asset('images/Maira Bloom Floral App Logo.png') }}"
+                    alt="Logo MAIRA BLOOM"
+                >
+                <span>MAIRA <span style="color:#C88F9D;">BLOOM</span></span>
             </a>
 
-            <button class="navbar-toggler"
-                    type="button"
+            <button class="navbar-toggler" type="button"
                     data-bs-toggle="collapse"
                     data-bs-target="#mainNavbar"
                     aria-controls="mainNavbar"
                     aria-expanded="false"
                     aria-label="Toggle navigation">
-
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="collapse navbar-collapse" id="mainNavbar">
-
                 <ul class="navbar-nav ms-auto align-items-lg-center">
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}">
-                            Home
-                        </a>
+                        <a class="nav-link" href="{{ route('home') }}">Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('collection') }}">
-                            Collection
-                        </a>
+                        <a class="nav-link" href="{{ route('collection') }}">Collection</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}#about">
-                            About
-                        </a>
+                        <a class="nav-link" href="{{ route('home') }}#about">About</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}#contact">
-                            Contact
-                        </a>
+                        <a class="nav-link" href="{{ route('home') }}#contact">Contact</a>
                     </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link admin-link"
-                           href="{{ route('admin.login') }}">
-                            <i class="bi bi-person-lock me-1"></i>
-                            Admin Login
+                    <li class="nav-item ms-lg-2">
+                        <a class="nav-link admin-login" href="{{ url('/admin/login') }}">
+                            ♙ Admin Login
                         </a>
                     </li>
 
                 </ul>
-
             </div>
         </div>
     </nav>
@@ -238,67 +223,48 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="main-footer">
+    <footer>
         <div class="container">
+            <div class="row gy-4">
 
-            <div class="row g-4">
-
-                <div class="col-lg-5 col-md-6">
-
-                    <h3 class="footer-brand">
-                        MAIRA BLOOM
-                    </h3>
-
-                    <p class="mt-3">
+                <div class="col-md-5">
+                    <h3 class="serif mb-3">MAIRA BLOOM</h3>
+                    <p class="text-white-50">
                         Flowers Made With Meaning.
-                        Every flower tells a story and every bouquet
-                        carries a special meaning.
+                        Menghadirkan rangkaian bunga penuh makna
+                        untuk setiap momen istimewa.
                     </p>
-
                 </div>
 
-                <div class="col-lg-3 col-md-6">
-
-                    <h6 class="mb-3">Quick Links</h6>
-
-                    <a href="{{ route('home') }}">Home</a>
-
-                    <a href="{{ route('collection') }}">Our Collection</a>
-
-                    <a href="{{ route('admin.login') }}">Admin Login</a>
-
+                <div class="col-md-3">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <p><a href="{{ route('home') }}">Home</a></p>
+                    <p><a href="{{ route('collection') }}">Collection</a></p>
+                    <p><a href="{{ route('home') }}#about">About Us</a></p>
                 </div>
 
-                <div class="col-lg-4">
-
-                    <h6 class="mb-3">Our Studio</h6>
-
-                    <p>
-                        PT Mekar Asri Nusantara
-                        <br>
-                        MAIRA BLOOM Florist & Flower Studio
+                <div class="col-md-4">
+                    <h5 class="mb-3">Our Studio</h5>
+                    <p class="text-white-50">
+                        MAIRA BLOOM — Florist & Flower Studio
                     </p>
-
-                    <p>
-                        <i class="bi bi-flower1 me-2"></i>
+                    <p class="text-white-50">
                         Flowers Made With Meaning.
                     </p>
-
                 </div>
 
             </div>
 
-            <div class="footer-bottom">
+            <hr class="border-secondary mt-4">
+
+            <div class="text-center text-white-50 small">
                 &copy; {{ date('Y') }} MAIRA BLOOM.
                 All Rights Reserved.
             </div>
-
         </div>
     </footer>
 
-    <!-- Bootstrap JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     @stack('scripts')
 
 </body>
